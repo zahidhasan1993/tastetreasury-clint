@@ -1,18 +1,28 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const navList = (
     <>
-      <li>
-        <a>Item 1</a>
-      </li>
-      <li>
-        <a>Item 3</a>
-      </li>
+      <Link>
+        <li className="hover:text-[#EEFF25] mx-2">HOME</li>
+      </Link>
+      <Link>
+        <li className="hover:text-[#EEFF25] mx-2">CONTACT US</li>
+      </Link>
+      <Link>
+        <li className="hover:text-[#EEFF25] mx-2">DASHBOARD</li>
+      </Link>
+      <Link>
+        <li className="hover:text-[#EEFF25] mx-2">OUR MENU</li>
+      </Link>
+      <Link>
+        <li className="hover:text-[#EEFF25] mx-2">OUR SHOP</li>
+      </Link>
     </>
   );
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar fixed z-10 bg-black bg-opacity-30 text-white container mx-auto">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -38,13 +48,11 @@ const Navbar = () => {
             {navList}
           </ul>
         </div>
-        <p className="btn btn-ghost normal-case text-xl">TasteTreasury</p>
+        <p className="btn btn-ghost normal-case text-xl text-white">TasteTreasury</p>
       </div>
-      <div className="navbar-center hidden lg:flex">
+      <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navList}</ul>
-      </div>
-      <div className="navbar-end">
-        <a className="btn">Get started</a>
+        <a className="btn bg-[#E8E8E8] text-[#BB8506] border-none ">Login</a>
       </div>
     </div>
   );
