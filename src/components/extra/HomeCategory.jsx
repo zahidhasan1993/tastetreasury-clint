@@ -29,7 +29,7 @@ const HomeCategory = () => {
         <SwiperSlide>
           <div className="md:relative">
             <img src={slide1} alt="food salad" />
-            <h1 className="uppercase md:text-3xl md:absolute md:bottom-10 md:right-[4.3rem] text-white -mt-14 md:-mt-0 font-thin">
+            <h1 className="uppercase md:text-3xl md:absolute md:bottom-10 md:right-[7rem] text-white -mt-14 md:-mt-0 font-thin">
               salad
             </h1>
           </div>
@@ -37,7 +37,7 @@ const HomeCategory = () => {
         <SwiperSlide>
           <div className="md:relative">
             <img src={slide2} alt="food salad" />
-            <h1 className="uppercase md:text-3xl md:absolute md:bottom-10 md:right-[4.3rem] text-white -mt-14 md:-mt-0 font-thin">
+            <h1 className="uppercase md:text-3xl md:absolute md:bottom-10 md:right-[7rem] text-white -mt-14 md:-mt-0 font-thin">
               Pizza
             </h1>
           </div>
@@ -45,7 +45,7 @@ const HomeCategory = () => {
         <SwiperSlide>
           <div className="md:relative">
             <img src={slide3} alt="food salad" />
-            <h1 className="uppercase md:text-3xl md:absolute md:bottom-10 md:right-[4.3rem] text-white -mt-14 md:-mt-0 font-thin">
+            <h1 className="uppercase md:text-3xl md:absolute md:bottom-10 md:right-[7rem] text-white -mt-14 md:-mt-0 font-thin">
               Soup
             </h1>
           </div>
@@ -53,7 +53,7 @@ const HomeCategory = () => {
         <SwiperSlide>
           <div className="md:relative">
             <img src={slide4} alt="food salad" />
-            <h1 className="uppercase md:text-3xl md:absolute md:bottom-10 md:right-[4.3rem] text-white -mt-14 md:-mt-0 font-thin">
+            <h1 className="uppercase md:text-3xl md:absolute md:bottom-10 md:right-[7rem] text-white -mt-14 md:-mt-0 font-thin">
               desert
             </h1>
           </div>
@@ -61,7 +61,7 @@ const HomeCategory = () => {
         <SwiperSlide>
           <div className="md:relative">
             <img src={slide5} alt="food salad" />
-            <h1 className="uppercase md:text-3xl md:absolute md:bottom-10 md:right-[4.3rem] text-white -mt-14 md:-mt-0 font-thin">
+            <h1 className="uppercase md:text-3xl md:absolute md:bottom-10 md:right-[7rem] text-white -mt-14 md:-mt-0 font-thin">
               salad
             </h1>
           </div>
