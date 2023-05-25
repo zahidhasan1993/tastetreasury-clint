@@ -16,18 +16,19 @@ const HomePopularItems = () => {
 
     // console.log(items);
   return (
-    <div className="my-24 md:mx-36">
+    <div className="my-24 md:mx-36 text-center">
       <div>
         <BannnerTitle
           mainText={"FROM OUR MENU"}
           smallText={"Check it out"}
         ></BannnerTitle>
       </div>
-      <div className="md:grid md:grid-cols-2 md:gap-8">
+      <div className="md:grid md:grid-cols-2 md:gap-16">
             {
                 items.map(item => <MenuSection key={item._id} food={item}></MenuSection>)
             }
       </div>
+      <button className="btn btn-outline border-0 border-b-4 mt-8">VIEW FULL MENU</button>
     </div>
   );
 };
