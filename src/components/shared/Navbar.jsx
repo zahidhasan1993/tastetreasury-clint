@@ -1,24 +1,49 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const navList = (
     <>
-      <Link>
-        <li className="hover:text-[#EEFF25] mx-2">HOME</li>
-      </Link>
-      <Link>
-        <li className="hover:text-[#EEFF25] mx-2">CONTACT US</li>
-      </Link>
-      <Link>
-        <li className="hover:text-[#EEFF25] mx-2">DASHBOARD</li>
-      </Link>
-      <Link>
-        <li className="hover:text-[#EEFF25] mx-2">OUR MENU</li>
-      </Link>
-      <Link>
-        <li className="hover:text-[#EEFF25] mx-2">OUR SHOP</li>
-      </Link>
+      <NavLink
+        to="/"
+        className={({ isActive}) =>
+          isActive ? "text-[#EEFF25] mx-2" : "hover:text-[#EEFF25] mx-2"
+        }
+      >
+        Home
+      </NavLink>
+      <NavLink
+        to="/contact"
+        className={({ isActive}) =>
+          isActive ? "text-[#EEFF25] mx-2" : "hover:text-[#EEFF25] mx-2"
+        }
+      >
+        Contact
+      </NavLink>
+      <NavLink
+        to="/dashboard"
+        className={({ isActive}) =>
+          isActive ? "text-[#EEFF25] mx-2" : "hover:text-[#EEFF25] mx-2"
+        }
+      >
+        Dashboard
+      </NavLink>
+      <NavLink
+        to="/menu"
+        className={({ isActive}) =>
+          isActive ? "text-[#EEFF25] mx-2" : "hover:text-[#EEFF25] mx-2"
+        }
+      >
+        Our Menu
+      </NavLink>
+      <NavLink
+        to="/shop"
+        className={({ isActive}) =>
+          isActive ? "text-[#EEFF25] mx-2" : "hover:text-[#EEFF25] mx-2"
+        }
+      >
+        Our Shop
+      </NavLink>
     </>
   );
   return (
@@ -48,7 +73,9 @@ const Navbar = () => {
             {navList}
           </ul>
         </div>
-        <p className="btn btn-ghost normal-case text-xl text-white">TasteTreasury</p>
+        <p className="btn btn-ghost normal-case text-xl text-white">
+          TasteTreasury
+        </p>
       </div>
       <div className="navbar-end hidden lg:flex text-white">
         <ul className="menu menu-horizontal px-1">{navList}</ul>
