@@ -1,20 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import BannnerTitle from "../banner/BannnerTitle";
 import MenuSection from "./MenuSection";
+import useMenu from "../../customHooks/useMenu";
 
 const HomePopularItems = () => {
-    const [items,setItems] = useState([]);
+  const [data] = useMenu();
+  const popularFood = data.filter((food) => food.category === "popular");
 
-    useEffect(() => {
-        fetch('menu.json')
-        .then(res => res.json())
-        .then(data => {
-            const popularFood = data.filter(food => food.category === 'popular');
-            setItems(popularFood);
-        })
-    },[])
-
-    // console.log(items);
   return (
     <div className="my-24 md:mx-36 text-center">
       <div>
@@ -24,11 +16,13 @@ const HomePopularItems = () => {
         ></BannnerTitle>
       </div>
       <div className="md:grid md:grid-cols-2 md:gap-16">
-            {
-                items.map(item => <MenuSection key={item._id} food={item}></MenuSection>)
-            }
+        {popularFood.map((item) => (
+          <MenuSection key={item._id} food={item}></MenuSection>
+        ))}
       </div>
-      <button className="btn btn-outline border-0 border-b-4 mt-8">VIEW FULL MENU</button>
+      <button className="btn btn-outline border-0 border-b-4 mt-8">
+        VIEW FULL MENU
+      </button>
     </div>
   );
 };
