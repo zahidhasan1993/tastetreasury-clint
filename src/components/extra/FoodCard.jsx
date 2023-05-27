@@ -1,11 +1,11 @@
 import React from "react";
 
-const ChefFoodCard = ({ food }) => {
+const FoodCard = ({ food }) => {
   const { image, recipe, name } = food;
   return (
     <div className="card w-full bg-base-100 shadow-xl">
       <figure>
-        <img src={image} alt="Foods" />
+        <img src={image} alt="Foods" className="w-full h-[18rem]"/>
       </figure>
       <div className="card-body items-center text-center">
         <h2 className="card-title">{name}</h2>
@@ -18,4 +18,4 @@ const ChefFoodCard = ({ food }) => {
   );
 };
 
-export default ChefFoodCard;
+export default FoodCard;

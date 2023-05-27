@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import BannnerTitle from '../banner/BannnerTitle';
-import ChefFoodCard from './ChefFoodCard';
+import FoodCard from './FoodCard';
 
 const ChefRecomends = () => {
     const [foods,setFoods] = useState([]);
@@ -19,11 +19,11 @@ const ChefRecomends = () => {
         <div className='md:mx-36'>
             <BannnerTitle
                 smallText={'Should Try'}
-                mainText={'CHEF RECOMMENDS'}
+                mainText={' RECOMMENDS'}
             ></BannnerTitle>
             <div className='md:grid md:grid-cols-3 gap-5'>
                 {
-                    foods.map(food => <ChefFoodCard key={food._id} food={food}></ChefFoodCard>)
+                    foods.map(food => <FoodCard key={food._id} food={food}></FoodCard>)
                 }
             </div>
         </div>
