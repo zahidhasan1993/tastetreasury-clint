@@ -6,6 +6,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import useMenu from "../../customHooks/useMenu";
 import FoodCard from "../extra/FoodCard";
+import './order.css'
 
 const Order = () => {
   TitleChange("Order | TasteTreasury");
@@ -30,7 +31,7 @@ const Order = () => {
       ></MenuCover>
       <div className="my-32 text-center ">
         <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-          <div className="font-bold text-[#BB8506]">
+          <div className="font-bold text-xl py-8">
             <TabList>
               <Tab>Salad</Tab>
               <Tab>Pizza</Tab>

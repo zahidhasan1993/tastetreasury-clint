@@ -2,6 +2,7 @@ import React from "react";
 import BannnerTitle from "../banner/BannnerTitle";
 import MenuSection from "./MenuSection";
 import useMenu from "../../customHooks/useMenu";
+import { Link } from "react-router-dom";
 
 const HomePopularItems = () => {
   const [data] = useMenu();
@@ -20,9 +21,11 @@ const HomePopularItems = () => {
           <MenuSection key={item._id} food={item}></MenuSection>
         ))}
       </div>
-      <button className="btn btn-outline border-0 border-b-4 mt-8">
-        VIEW FULL MENU
-      </button>
+      <Link to="/order">
+        <button className="btn btn-outline border-0 border-b-4 mt-8">
+          VIEW FULL MENU
+        </button>
+      </Link>
     </div>
   );
 };
