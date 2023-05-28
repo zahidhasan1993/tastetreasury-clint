@@ -36,7 +36,7 @@ const Order = () => {
         name="Order Now"
         msg="Would you like to try a dish"
       ></MenuCover>
-      <div className="my-32 text-center ">
+      <div className="my-32 text-center md:mx-36">
         <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <div className="font-bold text-xl py-8">
             <TabList>

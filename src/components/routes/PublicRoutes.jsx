@@ -5,6 +5,8 @@ import ErrorPage from '../extra/ErrorPage';
 import Home from '../layouts/Home';
 import Menu from '../mainComponents/Menu';
 import Order from '../mainComponents/Order';
+import Login from '../mainComponents/Login';
+import Register from '../mainComponents/Register';
 
 
 const router = createBrowserRouter([
@@ -28,6 +30,14 @@ const router = createBrowserRouter([
             {
                 path: 'order/:category',
                 element: <Order></Order>
+            },
+            {
+                path: 'login',
+                element: <Login></Login>
+            },
+            {
+                path: 'register',
+                element: <Register></Register>
             }
         ]
     }
