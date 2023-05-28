@@ -37,7 +37,7 @@ const Navbar = () => {
         Our Menu
       </NavLink>
       <NavLink
-        to="/order"
+        to="/order/salad"
         className={({ isActive}) =>
           isActive ? "text-[#EEFF25] mx-2" : "hover:text-[#EEFF25] mx-2"
         }

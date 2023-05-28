@@ -7,11 +7,18 @@ import "react-tabs/style/react-tabs.css";
 import useMenu from "../../customHooks/useMenu";
 import FoodCard from "../extra/FoodCard";
 import './order.css'
+import { useParams } from "react-router-dom";
 
 const Order = () => {
   TitleChange("Order | TasteTreasury");
-  const [tabIndex, setTabIndex] = useState(0);
+  const categories = ['salad','pizza','soup','dessert','drinks'];
+  const {category} = useParams();
+  const initialIndex = categories.indexOf(category);
+  const [tabIndex, setTabIndex] = useState(initialIndex);
   const [foods] = useMenu();
+  
+
+  console.log(category);
 
   const drinks = foods.filter((food) => food.category === "drinks");
   const dessertFoods = foods.filter((food) => food.category === "dessert");

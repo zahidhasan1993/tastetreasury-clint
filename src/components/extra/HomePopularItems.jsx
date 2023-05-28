@@ -21,7 +21,7 @@ const HomePopularItems = () => {
           <MenuSection key={item._id} food={item}></MenuSection>
         ))}
       </div>
-      <Link to="/order">
+      <Link to="/order/salad">
         <button className="btn btn-outline border-0 border-b-4 mt-8">
           VIEW FULL MENU
         </button>
