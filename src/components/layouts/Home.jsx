@@ -31,7 +31,7 @@ const Home = () => {
       <div data-aos="flip-up">
         <CallUs></CallUs>
       </div>
-      <div data-aos="zoom-in-down">
+      <div data-aos="zoom-in-down" className="my-11">
         <ChefRecomends></ChefRecomends>
       </div>
      
