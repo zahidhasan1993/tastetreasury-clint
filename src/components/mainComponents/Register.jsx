@@ -19,11 +19,12 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const { newUserCreate, userUpdate } = useContext(DataProvider);
   const onSubmit = (data, e) => {
     const form = e.target;
     if (validateCaptcha(data.captcha)) {
       newUserCreate(data.email, data.password)
-        .then((result) => {
+        .then(() => {
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -32,6 +33,7 @@ const Register = () => {
             timer: 1500,
           });
           form.reset();
+          userUpdate(data.name,data.photo)
         })
         .catch((error) => {
           Swal.fire({
@@ -49,7 +51,7 @@ const Register = () => {
     }
   };
 
-  const { newUserCreate } = useContext(DataProvider);
+ 
 
   const defaultOptions = {
     loop: true, // Set it to true if you want the animation to loop
@@ -107,6 +109,18 @@ const Register = () => {
                   Email is required
                 </p>
               )}
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">PhotoUrl</span>
+              </label>
+              <input
+                type="text"
+                {...register("photo")}
+                name="photo"
+                placeholder="Your picture url"
+                className="input input-bordered"
+              />
             </div>
             <div className="form-control">
               <label className="label">

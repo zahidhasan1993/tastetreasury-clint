@@ -8,12 +8,15 @@ import {
 import Lottie from "react-lottie";
 import loginLottie from "../../assets/lotties/login.json";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { DataProvider } from "../providers/AuthProvider";
 
 const Login = () => {
   TitleChange("Login | TasteTreasury");
   const {userLogin} = useContext(DataProvider);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const defaultOptions = {
     loop: true, // Set it to true if you want the animation to loop
@@ -37,7 +40,7 @@ const Login = () => {
 
     if (validateCaptcha(captcha)) {
       userLogin(email,password)
-      .then(result => {
+      .then(() => {
         Swal.fire({
           position: 'top-end',
           icon: 'success',
@@ -45,6 +48,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500
         })
+        navigate(from, { replace: true });
         form.reset();
       })
       .catch(error => {
