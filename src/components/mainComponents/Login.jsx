@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { TitleChange } from "../../titleChange";
 import {
   loadCaptchaEnginge,
@@ -7,11 +7,13 @@ import {
 } from "react-simple-captcha";
 import Lottie from "react-lottie";
 import loginLottie from "../../assets/lotties/login.json";
-import Swal from 'sweetalert2';
-
+import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
+import { DataProvider } from "../providers/AuthProvider";
 
 const Login = () => {
   TitleChange("Login | TasteTreasury");
+  const {userLogin} = useContext(DataProvider);
 
   const defaultOptions = {
     loop: true, // Set it to true if you want the animation to loop
@@ -21,11 +23,10 @@ const Login = () => {
       preserveAspectRatio: "xMidYMid slice", // Adjust the aspect ratio as needed
     },
   };
-  
+
   useEffect(() => {
-    loadCaptchaEnginge(6); 
-  },[])
- 
+    loadCaptchaEnginge(6);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,25 +34,41 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     const captcha = form.captcha.value;
-   
+
     if (validateCaptcha(captcha)) {
-      console.log(email,password,captcha);
-    }
-    else{
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Captcha is not correct',
+      userLogin(email,password)
+      .then(result => {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'User Login Successfully',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        form.reset();
       })
+      .catch(error => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.message,
+        });
+      })
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Captcha is not correct",
+      });
     }
   };
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row">
-        <div className="text-center lg:text-left">
+        <div className="text-center lg:text-left md:w-1/2">
           <Lottie options={defaultOptions} />
         </div>
-        <div className="card w-full shadow-2xl bg-base-100">
+        <div className="card md:w-1/2 shadow-2xl bg-base-100">
           <h1 className="text-center text-3xl font-bold py-8 underline">
             Login Here
           </h1>
@@ -102,6 +119,7 @@ const Login = () => {
                 Login
               </button>
             </div>
+            <p className="mt-8">New to TasteTreasury <Link to="/register" className="text-blue-600">Register Here</Link></p>
           </form>
         </div>
       </div>
