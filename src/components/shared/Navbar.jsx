@@ -1,9 +1,12 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { DataProvider } from "../providers/AuthProvider";
+import { FaShoppingCart } from "react-icons/fa";
+import useFetch from "../../customHooks/useFetch";
 
 const Navbar = () => {
   const {user,userSignOut} = useContext(DataProvider);
+  const cartItemsLength = useFetch('http://localhost:5000/cart').length;
   const navList = (
     <>
       <NavLink
@@ -84,9 +87,13 @@ const Navbar = () => {
       </div>
       <div className="navbar-end hidden lg:flex text-white">
         <ul className="menu menu-horizontal px-1">{navList}</ul>
+        <div className="mx-8">
+        <button className="btn btn-ghost"><FaShoppingCart className="text-2xl"></FaShoppingCart><sup className="badge badge-secondary ml-1">{cartItemsLength}</sup></button>
+        </div>
         {
           user ? <><button onClick={handleLogOut} className="btn btn-outline btn-error">Logout</button></> : <><Link to='/login' className="btn bg-[#E8E8E8] text-[#BB8506] border-none md:ml-8">Login</Link></>
         }
+        
       </div>
     </div>
   );

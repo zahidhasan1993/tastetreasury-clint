@@ -14,7 +14,7 @@ const ChefRecomends = () => {
         })
     },[])
 
-    console.log(foods);
+    // console.log(foods);
     return (
         <div className='md:mx-36'>
             <BannnerTitle

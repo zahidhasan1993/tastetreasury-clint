@@ -16,4 +16,4 @@ const useMenu = () => {
     return [items,loader]
 }
 
-export default useMenu
+export default useMenu;

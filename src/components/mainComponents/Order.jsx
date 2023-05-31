@@ -18,7 +18,7 @@ const Order = () => {
   const [foods] = useMenu();
   
 
-  console.log(category);
+  // console.log(category);
 
   const drinks = foods.filter((food) => food.category === "drinks");
   const dessertFoods = foods.filter((food) => food.category === "dessert");
