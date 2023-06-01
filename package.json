@@ -23,6 +23,7 @@
     "react-icons": "^4.9.0",
     "react-lottie": "^1.2.3",
     "react-parallax": "^3.5.1",
+    "react-query": "^3.39.3",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.11.2",
     "react-scroll-parallax": "^3.4.2",

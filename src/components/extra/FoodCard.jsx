@@ -2,13 +2,16 @@ import React, { useContext } from "react";
 import { DataProvider } from "../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import useCart from "../../customHooks/useCart";
 
 const FoodCard = ({ food }) => {
   const { image, recipe, name, price, _id } = food;
   const { user } = useContext(DataProvider);
   const navigate = useNavigate();
+  const {refetch} = useCart();
+
   const handleAddToCart = (item) => {
-    const food = {food_id: _id,image,name,price,email: user.email}
+    const food = {food_id: _id,image,name,price,email: user?.email}
     if (user) {
       fetch("http://localhost:5000/cart", {
         method: "POST",
@@ -27,6 +30,7 @@ const FoodCard = ({ food }) => {
               showConfirmButton: false,
               timer: 1500,
             });
+            refetch(); //refetch to dynamecly show items in cart
           }
         });
     }

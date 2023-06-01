@@ -7,13 +7,14 @@ import {
 } from "react-simple-captcha";
 import registerLottie from "../../assets/lotties/register.json";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { DataProvider } from "../providers/AuthProvider";
 import { TitleChange } from "../../titleChange";
 import { useForm } from "react-hook-form";
 
 const Register = () => {
   TitleChange("Register | TasteTreasury");
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -36,6 +37,7 @@ const Register = () => {
               showConfirmButton: false,
               timer: 1500,
             });
+            navigate('/order')
           })
           .catch(error => {
             Swal.fire({

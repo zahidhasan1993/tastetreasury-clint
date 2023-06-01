@@ -2,16 +2,18 @@ import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { DataProvider } from "../providers/AuthProvider";
 import { FaShoppingCart } from "react-icons/fa";
-import useFetch from "../../customHooks/useFetch";
+import useCart from "../../customHooks/useCart";
 
 const Navbar = () => {
   const { user, userSignOut } = useContext(DataProvider);
   const [hover, setHover] = useState(false);
+  const {cart} = useCart();
+  // console.log(cart);
 
   const onHover = () => {
     setHover(!hover);
   };
-  const cartItemsLength = useFetch("http://localhost:5000/cart").length;
+ 
   const navList = (
     <>
       <NavLink
@@ -95,7 +97,7 @@ const Navbar = () => {
         <div className="mx-2">
           <button className="btn btn-ghost">
             <FaShoppingCart className="text-2xl"></FaShoppingCart>
-            <sup className="badge badge-secondary ml-1">{cartItemsLength}</sup>
+            <sup className="badge badge-secondary ml-1">{cart.length}</sup>
           </button>
         </div>
         {hover ? <p className="font-bold mr-2">{user.displayName}</p> : <></>}
