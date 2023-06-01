@@ -1,17 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { DataProvider } from "../providers/AuthProvider";
 import { FaShoppingCart } from "react-icons/fa";
 import useFetch from "../../customHooks/useFetch";
 
 const Navbar = () => {
-  const {user,userSignOut} = useContext(DataProvider);
-  const cartItemsLength = useFetch('http://localhost:5000/cart').length;
+  const { user, userSignOut } = useContext(DataProvider);
+  const [hover, setHover] = useState(false);
+
+  const onHover = () => {
+    setHover(!hover);
+  };
+  const cartItemsLength = useFetch("http://localhost:5000/cart").length;
   const navList = (
     <>
       <NavLink
         to="/"
-        className={({ isActive}) =>
+        className={({ isActive }) =>
           isActive ? "text-[#EEFF25] mx-2" : "hover:text-[#EEFF25] mx-2"
         }
       >
@@ -19,7 +24,7 @@ const Navbar = () => {
       </NavLink>
       <NavLink
         to="/contact"
-        className={({ isActive}) =>
+        className={({ isActive }) =>
           isActive ? "text-[#EEFF25] mx-2" : "hover:text-[#EEFF25] mx-2"
         }
       >
@@ -27,7 +32,7 @@ const Navbar = () => {
       </NavLink>
       <NavLink
         to="/dashboard"
-        className={({ isActive}) =>
+        className={({ isActive }) =>
           isActive ? "text-[#EEFF25] mx-2" : "hover:text-[#EEFF25] mx-2"
         }
       >
@@ -35,7 +40,7 @@ const Navbar = () => {
       </NavLink>
       <NavLink
         to="/menu"
-        className={({ isActive}) =>
+        className={({ isActive }) =>
           isActive ? "text-[#EEFF25] mx-2" : "hover:text-[#EEFF25] mx-2"
         }
       >
@@ -43,7 +48,7 @@ const Navbar = () => {
       </NavLink>
       <NavLink
         to="/order/salad"
-        className={({ isActive}) =>
+        className={({ isActive }) =>
           isActive ? "text-[#EEFF25] mx-2" : "hover:text-[#EEFF25] mx-2"
         }
       >
@@ -53,7 +58,7 @@ const Navbar = () => {
   );
   const handleLogOut = () => {
     userSignOut();
-  }
+  };
   return (
     <div className="navbar fixed z-10 bg-black bg-opacity-30  container mx-auto">
       <div className="navbar-start">
@@ -87,13 +92,41 @@ const Navbar = () => {
       </div>
       <div className="navbar-end hidden lg:flex text-white">
         <ul className="menu menu-horizontal px-1">{navList}</ul>
-        <div className="mx-8">
-        <button className="btn btn-ghost"><FaShoppingCart className="text-2xl"></FaShoppingCart><sup className="badge badge-secondary ml-1">{cartItemsLength}</sup></button>
+        <div className="mx-2">
+          <button className="btn btn-ghost">
+            <FaShoppingCart className="text-2xl"></FaShoppingCart>
+            <sup className="badge badge-secondary ml-1">{cartItemsLength}</sup>
+          </button>
         </div>
-        {
-          user ? <><button onClick={handleLogOut} className="btn btn-outline btn-error">Logout</button></> : <><Link to='/login' className="btn bg-[#E8E8E8] text-[#BB8506] border-none md:ml-8">Login</Link></>
-        }
-        
+        {hover ? <p className="font-bold mr-2">{user.displayName}</p> : <></>}
+        {user ? (
+          <>
+            <div
+              className="avatar online mr-2"
+              onMouseEnter={onHover}
+              onMouseLeave={onHover}
+            >
+              <div className="w-10 rounded-full">
+                <img src={user.photoURL} />
+              </div>
+            </div>
+            <button
+              onClick={handleLogOut}
+              className="btn btn-outline btn-error"
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <Link
+              to="/login"
+              className="btn bg-[#E8E8E8] text-[#BB8506] border-none md:ml-8"
+            >
+              Login
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

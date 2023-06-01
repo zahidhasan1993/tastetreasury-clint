@@ -25,15 +25,25 @@ const Register = () => {
     if (validateCaptcha(data.captcha)) {
       newUserCreate(data.email, data.password)
         .then(() => {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Account Created Successfully",
-            showConfirmButton: false,
-            timer: 1500,
-          });
+          
           form.reset();
           userUpdate(data.name,data.photo)
+          .then(() => {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Account Created Successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          })
+          .catch(error => {
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: error.message,
+            });
+          })
         })
         .catch((error) => {
           Swal.fire({
