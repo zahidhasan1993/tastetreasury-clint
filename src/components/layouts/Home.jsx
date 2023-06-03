@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import HomeBanner from "../banner/HomeBanner";
-import { TitleChange } from "../../titleChange";
+import { TitleChange } from "../../customHooks/titleChange";
 import HomeCategory from "../extra/HomeCategory";
 import HomeChefImage from "../extra/HomeChefImage";
 import HomePopularItems from "../extra/HomePopularItems";

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import orderImg from "../../assets/shop/banner2.jpg";
 import MenuCover from "../banner/MenuCover";
-import { TitleChange } from "../../titleChange";
+import { TitleChange } from "../../customHooks/titleChange";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import useMenu from "../../customHooks/useMenu";

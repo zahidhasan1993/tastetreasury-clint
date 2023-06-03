@@ -1,5 +1,5 @@
 import React from "react";
-import { TitleChange } from "../../titleChange";
+import { TitleChange } from "../../customHooks/titleChange";
 import MenuCover from "../banner/MenuCover";
 import bannerImg from "../../assets/menu/banner3.jpg";
 import BannnerTitle from "../banner/BannnerTitle";

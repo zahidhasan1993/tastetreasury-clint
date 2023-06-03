@@ -9,7 +9,7 @@ import registerLottie from "../../assets/lotties/register.json";
 import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
 import { DataProvider } from "../providers/AuthProvider";
-import { TitleChange } from "../../titleChange";
+import { TitleChange } from "../../customHooks/titleChange";
 import { useForm } from "react-hook-form";
 
 const Register = () => {

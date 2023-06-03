@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { TitleChange } from "../../titleChange";
+import { TitleChange } from "../../customHooks/titleChange";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,

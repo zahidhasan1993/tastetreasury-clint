@@ -95,10 +95,10 @@ const Navbar = () => {
       <div className="navbar-end hidden lg:flex text-white">
         <ul className="menu menu-horizontal px-1">{navList}</ul>
         <div className="mx-2">
-          <button className="btn btn-ghost">
+          <Link to='/dashboard/cart' className="btn btn-ghost">
             <FaShoppingCart className="text-2xl"></FaShoppingCart>
             <sup className="badge badge-secondary ml-1">{cart.length}</sup>
-          </button>
+          </Link>
         </div>
         {hover ? <p className="font-bold mr-2">{user.displayName}</p> : <></>}
         {user ? (
