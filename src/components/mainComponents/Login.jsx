@@ -10,6 +10,7 @@ import loginLottie from "../../assets/lotties/login.json";
 import Swal from "sweetalert2";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { DataProvider } from "../providers/AuthProvider";
+import GoogleLogin from "../shared/GoogleLogin";
 
 const Login = () => {
   TitleChange("Login | TasteTreasury");
@@ -122,6 +123,7 @@ const Login = () => {
               <button className="btn btn-outline border-0 border-b-4 text-black hover:bg-black hover:border-none hover:text-white">
                 Login
               </button>
+              <GoogleLogin></GoogleLogin>
             </div>
             <p className="mt-8">New to TasteTreasury <Link to="/register" className="text-blue-600">Register Here</Link></p>
           </form>

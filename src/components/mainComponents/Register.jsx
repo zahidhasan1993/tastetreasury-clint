@@ -26,26 +26,39 @@ const Register = () => {
     if (validateCaptcha(data.captcha)) {
       newUserCreate(data.email, data.password)
         .then(() => {
-          
           form.reset();
-          userUpdate(data.name,data.photo)
-          .then(() => {
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Account Created Successfully",
-              showConfirmButton: false,
-              timer: 1500,
+          userUpdate(data.name, data.photo)
+            .then(() => {
+              const user = { name: data.name, email: data.email};
+              fetch("http://localhost:5000/users", {
+                method: "POST",
+                headers: {
+                  "Content-type": "application/json",
+                },
+                body: JSON.stringify(user),
+              })
+                .then((res) => res.json())
+                .then((data) => {
+                  console.log(data);
+                  if (data.insertedId) {
+                    Swal.fire({
+                      position: "top-end",
+                      icon: "success",
+                      title: "Account Created Successfully",
+                      showConfirmButton: false,
+                      timer: 1500,
+                    });
+                    navigate("/order");
+                  }
+                });
+            })
+            .catch((error) => {
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: error.message,
+              });
             });
-            navigate('/order')
-          })
-          .catch(error => {
-            Swal.fire({
-              icon: "error",
-              title: "Oops...",
-              text: error.message,
-            });
-          })
         })
         .catch((error) => {
           Swal.fire({
@@ -62,8 +75,6 @@ const Register = () => {
       });
     }
   };
-
- 
 
   const defaultOptions = {
     loop: true, // Set it to true if you want the animation to loop

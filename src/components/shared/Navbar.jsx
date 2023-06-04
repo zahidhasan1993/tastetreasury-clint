@@ -94,13 +94,13 @@ const Navbar = () => {
       </div>
       <div className="navbar-end hidden lg:flex text-white">
         <ul className="menu menu-horizontal px-1">{navList}</ul>
-        <div className="mx-2">
+        <div className="mx-1">
           <Link to='/dashboard/cart' className="btn btn-ghost">
             <FaShoppingCart className="text-2xl"></FaShoppingCart>
             <sup className="badge badge-secondary ml-1">{cart.length}</sup>
           </Link>
         </div>
-        {hover ? <p className="font-bold mr-2">{user.displayName}</p> : <></>}
+        {hover ? <p className="font-bold mr-1">{user.displayName}</p> : <></>}
         {user ? (
           <>
             <div
@@ -123,7 +123,7 @@ const Navbar = () => {
           <>
             <Link
               to="/login"
-              className="btn bg-[#E8E8E8] text-[#BB8506] border-none md:ml-8"
+              className="btn bg-[#E8E8E8] text-[#BB8506] border-none md:ml-2"
             >
               Login
             </Link>
