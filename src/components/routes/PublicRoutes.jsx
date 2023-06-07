@@ -12,6 +12,10 @@ import PrivateRoute from "./PrivateRoute";
 import Dhome from "../dashboardComponents/Dhome";
 import Dreservation from "../dashboardComponents/Dreservation";
 import Dcart from "../dashboardComponents/Dcart";
+import Dpayment from "../dashboardComponents/Dpayment";
+import Dreview from "../dashboardComponents/Dreview";
+import Dbooking from "../dashboardComponents/Dbooking";
+import AllUsers from "../dashboardComponents/admin/AllUsers";
 
 const router = createBrowserRouter([
   {
@@ -53,7 +57,7 @@ const router = createBrowserRouter([
       </PrivateRoute>,
     children: [
       {
-        path:'dhome',
+        path:'home',
         element: <Dhome></Dhome>
       },
       {
@@ -63,6 +67,22 @@ const router = createBrowserRouter([
       {
         path: 'cart',
         element: <Dcart></Dcart>
+      },
+      {
+        path: 'payment',
+        element: <Dpayment></Dpayment>
+      },
+      {
+        path:'review',
+        element: <Dreview></Dreview>
+      },
+      {
+        path: 'booking',
+        element: <Dbooking></Dbooking>
+      },
+      {
+        path: 'allusers',
+        element: <AllUsers></AllUsers>
       }
     ]
   },

@@ -3,12 +3,15 @@ import { TitleChange } from "../../customHooks/titleChange";
 import BannnerTitle from "../banner/BannnerTitle";
 import DcartTable from "./DcartTable";
 import useCart from "../../customHooks/useCart";
+// import { useNavigate } from "react-router-dom";
 
 const Dcart = () => {
   TitleChange("Cart | TasteTreasury");
-  const items = useCart();
-  const total = items.cart.reduce((sum,item) => item.price + sum,0 )
-  console.log(total);
+  const {cart,refetch} = useCart();
+  // const navigate = useNavigate();
+  const total = cart?.reduce((sum,item) => item.price + sum,0 )
+  // console.log(total);
+  console.log(cart);
   return (
     <div className="w-full ">
       <BannnerTitle
@@ -16,7 +19,7 @@ const Dcart = () => {
         smallText="My Cart"
       ></BannnerTitle>
       <div className="md:flex md:justify-between">
-        <h1 className="text-3xl font-bold">Total Orders : {items.cart.length}</h1>
+        <h1 className="text-3xl font-bold">Total Orders : {cart?.length}</h1>
         <h1 className="text-3xl font-bold">Total Price : ${total}</h1>
         <button className="btn btn-wide bg-[#D1A054] border-none hover:bg-amber-300 hover:text-white ">PAY</button>
       </div>
@@ -35,7 +38,7 @@ const Dcart = () => {
             </thead>
             <tbody>
                 {
-                  items.cart.map(cart => <DcartTable key={cart._id} cart ={cart} refetch={items.refetch}></DcartTable>)
+                  cart?.map(cart => <DcartTable key={cart._id} cart ={cart} refetch={refetch}></DcartTable>)
                 }
             </tbody>
           </table>

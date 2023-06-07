@@ -11,6 +11,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { DataProvider } from "../providers/AuthProvider";
 import { TitleChange } from "../../customHooks/titleChange";
 import { useForm } from "react-hook-form";
+import GoogleLogin from "../shared/GoogleLogin";
 
 const Register = () => {
   TitleChange("Register | TasteTreasury");
@@ -193,6 +194,7 @@ const Register = () => {
               <button className="btn btn-outline border-0 border-b-4 text-black hover:bg-black hover:border-none hover:text-white">
                 Register
               </button>
+              <GoogleLogin></GoogleLogin>
             </div>
             <p className="mt-8">
               All ready have an account{" "}

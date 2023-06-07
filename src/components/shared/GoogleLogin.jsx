@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import googlebtn from "../../assets/images.png";
 import { DataProvider } from "../providers/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const GoogleLogin = () => {
   const { userGoogleLogin } = useContext(DataProvider);
@@ -22,10 +23,15 @@ const GoogleLogin = () => {
           body: JSON.stringify(user),
         })
           .then((res) => res.json())
-          .then(() => {
-            navigate(from, { replace: true });
+          .then(() => {});
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Login Successful",
+            showConfirmButton: false,
+            timer: 1500,
           });
-          
+          navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error.message);

@@ -11,11 +11,12 @@ const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <div className="container mx-auto">
-      <QueryClientProvider client={queryClient}>
-        <AuthProvider>
+      <AuthProvider>
+        {" "}
+        <QueryClientProvider client={queryClient}>
           <RouterProvider router={router}></RouterProvider>
-        </AuthProvider>
-      </QueryClientProvider>
+        </QueryClientProvider>
+      </AuthProvider>
     </div>
   </React.StrictMode>
 );

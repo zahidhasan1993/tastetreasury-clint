@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { TitleChange } from "../../customHooks/titleChange";
 import {
@@ -11,11 +11,35 @@ import {
   FaPager,
   FaRegNewspaper,
   FaShopify,
+  FaStackExchange,
+  FaUsers,
+  FaUtensils,
 } from "react-icons/fa";
 import useCart from "../../customHooks/useCart";
+import { useQuery } from "react-query";
+import { DataProvider } from "../providers/AuthProvider";
 
 const Dashboard = () => {
   TitleChange("Dashboard | TasteTreasury");
+  const {user} = useContext(DataProvider);
+  const {data: users = []} = useQuery({
+    queryKey : 'users',
+    queryFn: async () => {
+      const res = await fetch('http://localhost:5000/users');
+      return res.json();
+    }
+  })
+  // console.log(users);
+  let admin = false;
+  for (let i = 0; i < users.length; i++) {
+    const adminUser = users[i];
+    if (user.email === adminUser.email && adminUser.role === 'admin') {
+      admin = true;
+    }
+    
+    
+  }
+  
   const {cart} = useCart();
   return (
     <div className="drawer drawer-mobile">
@@ -33,8 +57,51 @@ const Dashboard = () => {
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-16 w-80 h-full bg-[#D1A054] text-base-content">
           <h1 className="mb-16 text-3xl font-bold">TasteTreasury</h1>
-          <NavLink
-            to="/dashboard/dhome"
+          {
+            admin ? <>
+              <NavLink
+            to="/dashboard/adminHome"
+            className={({ isActive }) =>
+              isActive
+                ? "text-white font-bold flex mb-4 text-xl items-center gap-2"
+                : "flex mb-4 text-xl items-center gap-2"
+            }
+          >
+            <FaHome></FaHome>
+            <li>Admin Home</li>
+          </NavLink>
+          <NavLink to='/dashboard/additems' className={({ isActive }) =>
+              isActive
+                ? "text-white font-bold flex mb-4 text-xl items-center gap-2"
+                : "flex mb-4 text-xl items-center gap-2"
+            }>
+            <FaUtensils></FaUtensils> <li>Add Items</li>
+          </NavLink>
+          <NavLink to='/dashboard/manageitems' className={({ isActive }) =>
+              isActive
+                ? "text-white font-bold flex mb-4 text-xl items-center gap-2"
+                : "flex mb-4 text-xl items-center gap-2"
+            }>
+            <FaStackExchange></FaStackExchange> <li>Manage Items</li>
+          </NavLink>
+          
+          <NavLink to='/dashboard/bookings' className={({ isActive }) =>
+              isActive
+                ? "text-white font-bold flex mb-4 text-xl items-center gap-2"
+                : "flex mb-4 text-xl items-center gap-2"
+            }>
+            <FaRegNewspaper></FaRegNewspaper> <li>Manage Bookings</li>
+          </NavLink>
+          <NavLink to='/dashboard/allusers' className={({ isActive }) =>
+              isActive
+                ? "text-white font-bold flex mb-4 text-xl items-center gap-2"
+                : "flex mb-4 text-xl items-center gap-2"
+            }>
+            <FaUsers></FaUsers> <li>All Users</li>
+          </NavLink>
+            </> : <>
+              <NavLink
+            to="/dashboard/home"
             className={({ isActive }) =>
               isActive
                 ? "text-white font-bold flex mb-4 text-xl items-center gap-2"
@@ -51,7 +118,7 @@ const Dashboard = () => {
             }>
             <FaCalendar></FaCalendar> <li>Reservation</li>
           </NavLink>
-          <NavLink className={({ isActive }) =>
+          <NavLink to='/dashboard/payment' className={({ isActive }) =>
               isActive
                 ? "text-white font-bold flex mb-4 text-xl items-center gap-2"
                 : "flex mb-4 text-xl items-center gap-2"
@@ -65,20 +132,22 @@ const Dashboard = () => {
             }>
             <FaCartPlus></FaCartPlus> <li>My cart</li><sup className="badge badge-secondary ml-1">+{cart.length}</sup>
           </NavLink>
-          <NavLink className={({ isActive }) =>
+          <NavLink to='/dashboard/review' className={({ isActive }) =>
               isActive
                 ? "text-white font-bold flex mb-4 text-xl items-center gap-2"
                 : "flex mb-4 text-xl items-center gap-2"
             }>
             <FaRegNewspaper></FaRegNewspaper> <li>Add review</li>
           </NavLink>
-          <NavLink className={({ isActive }) =>
+          <NavLink to='/dashboard/booking' className={({ isActive }) =>
               isActive
                 ? "text-white font-bold flex mb-4 text-xl items-center gap-2"
                 : "flex mb-4 text-xl items-center gap-2"
             }>
             <FaPager></FaPager> <li>My booking</li>
           </NavLink>
+            </>
+          }
           <div className="divider"></div>
           <NavLink to='/' className={({ isActive }) =>
               isActive
