@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { TitleChange } from "../../customHooks/titleChange";
 import {
@@ -16,30 +16,12 @@ import {
   FaUtensils,
 } from "react-icons/fa";
 import useCart from "../../customHooks/useCart";
-import { useQuery } from "react-query";
-import { DataProvider } from "../providers/AuthProvider";
+import useAdmin from "../../customHooks/useAdmin";
 
 const Dashboard = () => {
   TitleChange("Dashboard | TasteTreasury");
-  const {user} = useContext(DataProvider);
-  const {data: users = []} = useQuery({
-    queryKey : 'users',
-    queryFn: async () => {
-      const res = await fetch('http://localhost:5000/users');
-      return res.json();
-    }
-  })
+  const {admin} = useAdmin();
   // console.log(users);
-  let admin = false;
-  for (let i = 0; i < users.length; i++) {
-    const adminUser = users[i];
-    if (user.email === adminUser.email && adminUser.role === 'admin') {
-      admin = true;
-    }
-    
-    
-  }
-  
   const {cart} = useCart();
   return (
     <div className="drawer drawer-mobile">

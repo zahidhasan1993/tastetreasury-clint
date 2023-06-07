@@ -1,10 +1,9 @@
-import { useContext } from 'react';
-import { DataProvider } from '../components/providers/AuthProvider';
 import { useQuery } from 'react-query';
 import useAxiosSecure from './useAxiosSecure';
+import useAuth from './useAuth';
 
 const useCart = () => {
-    const {user, loader} = useContext(DataProvider);
+    const {user, loader} = useAuth();
     // const token = localStorage.getItem('ACCESS_TOKEN');
     const axios = useAxiosSecure();
     // console.log(token);

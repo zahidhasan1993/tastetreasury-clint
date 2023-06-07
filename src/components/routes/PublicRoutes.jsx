@@ -16,6 +16,7 @@ import Dpayment from "../dashboardComponents/Dpayment";
 import Dreview from "../dashboardComponents/Dreview";
 import Dbooking from "../dashboardComponents/Dbooking";
 import AllUsers from "../dashboardComponents/admin/AllUsers";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -51,40 +52,45 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: 
+    element: (
       <PrivateRoute>
         <Dashboard></Dashboard>
-      </PrivateRoute>,
+      </PrivateRoute>
+    ),
     children: [
       {
-        path:'home',
-        element: <Dhome></Dhome>
+        path: "home",
+        element: <Dhome></Dhome>,
       },
       {
-        path: 'reservation',
-        element: <Dreservation></Dreservation>
+        path: "reservation",
+        element: <Dreservation></Dreservation>,
       },
       {
-        path: 'cart',
-        element: <Dcart></Dcart>
+        path: "cart",
+        element: <Dcart></Dcart>,
       },
       {
-        path: 'payment',
-        element: <Dpayment></Dpayment>
+        path: "payment",
+        element: <Dpayment></Dpayment>,
       },
       {
-        path:'review',
-        element: <Dreview></Dreview>
+        path: "review",
+        element: <Dreview></Dreview>,
       },
       {
-        path: 'booking',
-        element: <Dbooking></Dbooking>
+        path: "booking",
+        element: <Dbooking></Dbooking>,
       },
       {
-        path: 'allusers',
-        element: <AllUsers></AllUsers>
-      }
-    ]
+        path: "allusers",
+        element: (
+          <AdminRoute>
+            <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
+      },
+    ],
   },
 ]);
 

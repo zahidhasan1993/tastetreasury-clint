@@ -11,6 +11,7 @@ const Dcart = () => {
   // const navigate = useNavigate();
   const total = cart?.reduce((sum,item) => item.price + sum,0 )
   // console.log(total);
+  const finalTotal = parseFloat(total).toFixed(2)
   console.log(cart);
   return (
     <div className="w-full ">
@@ -20,7 +21,7 @@ const Dcart = () => {
       ></BannnerTitle>
       <div className="md:flex md:justify-between">
         <h1 className="text-3xl font-bold">Total Orders : {cart?.length}</h1>
-        <h1 className="text-3xl font-bold">Total Price : ${total}</h1>
+        <h1 className="text-3xl font-bold">Total Price : ${finalTotal}</h1>
         <button className="btn btn-wide bg-[#D1A054] border-none hover:bg-amber-300 hover:text-white ">PAY</button>
       </div>
       <div className="mt-14">
