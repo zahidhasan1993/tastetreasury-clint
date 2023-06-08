@@ -17,6 +17,7 @@ import Dreview from "../dashboardComponents/Dreview";
 import Dbooking from "../dashboardComponents/Dbooking";
 import AllUsers from "../dashboardComponents/admin/AllUsers";
 import AdminRoute from "./AdminRoute";
+import AddItems from "../dashboardComponents/admin/AddItems";
 
 const router = createBrowserRouter([
   {
@@ -87,6 +88,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "additem",
+        element: (
+          <AdminRoute>
+            <AddItems></AddItems>
           </AdminRoute>
         ),
       },
