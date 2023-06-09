@@ -15,19 +15,19 @@ const Order = () => {
   const {category} = useParams();
   const initialIndex = categories.indexOf(category);
   const [tabIndex, setTabIndex] = useState(initialIndex);
-  const [foods] = useMenu();
+  const {items} = useMenu();
   
 
   // console.log(category);
 
-  const drinks = foods.filter((food) => food.category === "drinks");
-  const dessertFoods = foods.filter((food) => food.category === "dessert");
+  const drinks = items.filter((food) => food.category === "drinks");
+  const dessertFoods = items.filter((food) => food.category === "dessert");
 
-  const pizzas = foods.filter((food) => food.category === "pizza");
+  const pizzas = items.filter((food) => food.category === "pizza");
 
-  const salads = foods.filter((food) => food.category === "salad");
+  const salads = items.filter((food) => food.category === "salad");
 
-  const soup = foods.filter((food) => food.category === "soup");
+  const soup = items.filter((food) => food.category === "soup");
 
   return (
     <div>

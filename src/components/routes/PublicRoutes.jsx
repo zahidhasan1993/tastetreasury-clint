@@ -18,6 +18,7 @@ import Dbooking from "../dashboardComponents/Dbooking";
 import AllUsers from "../dashboardComponents/admin/AllUsers";
 import AdminRoute from "./AdminRoute";
 import AddItems from "../dashboardComponents/admin/AddItems";
+import ManageItems from "../dashboardComponents/admin/ManageItems";
 
 const router = createBrowserRouter([
   {
@@ -96,6 +97,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AddItems></AddItems>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manageitems",
+        element: (
+          <AdminRoute>
+            <ManageItems></ManageItems>
           </AdminRoute>
         ),
       },

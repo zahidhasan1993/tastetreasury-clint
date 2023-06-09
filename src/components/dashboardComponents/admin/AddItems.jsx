@@ -2,13 +2,16 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import BannnerTitle from "../../banner/BannnerTitle";
 import { TitleChange } from "../../../customHooks/titleChange";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../customHooks/useAxiosSecure";
 
 const AddItems = () => {
   TitleChange("Additem | TasteTreasury");
+  const axios = useAxiosSecure();
   const imgAPI = import.meta.env.VITE_imgapikey;
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit,reset } = useForm();
   const imgUploadUrl = `https://api.imgbb.com/1/upload?key=${imgAPI}`
-  console.log(imgAPI);
+  // console.log(imgAPI);
   const onSubmit = (data) => {
     const formData = new FormData();
     formData.append('image', data.image[0])
@@ -17,7 +20,34 @@ const AddItems = () => {
       body: formData
     })
     .then(res => res.json())
-    .then(image => console.log(image))
+    .then(imageData => {
+      if (imageData.success) {
+        const image = imageData.data.image.url;
+        const {name,category,price,recipe} = data;
+        const newData = {
+          name,
+          category,
+          price: parseFloat(price),
+          recipe,
+          image: image
+        }
+        axios.post('/menu/item', newData)
+        .then(data => {
+          console.log(data.data);
+          if (data.data.acknowledged) {
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Item Added',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            reset()
+          }
+        })
+      }
+    })
+    console.log(data);
   };
 
   return (
@@ -51,11 +81,11 @@ const AddItems = () => {
               <option disabled>
                 Pick one
               </option>
-              <option>Salad</option>
-              <option>Pizza</option>
-              <option>Soups</option>
-              <option>Desserts</option>
-              <option>Drinks</option>
+              <option>salad</option>
+              <option>pizza</option>
+              <option>soup</option>
+              <option>dessert</option>
+              <option>drinks</option>
             </select>
           </div>
           <div className="form-control w-full">

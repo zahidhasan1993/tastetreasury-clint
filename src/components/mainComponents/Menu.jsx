@@ -12,16 +12,16 @@ import MenuCatgory from "../extra/MenuCatgory";
 
 const Menu = () => {
   TitleChange("Menu | TasteTreasury");
-  const [foods] = useMenu();
+  const {items} = useMenu();
 
-  const offeredFoods = foods.filter((food) => food.category === "offered");
-  const dessertFoods = foods.filter((food) => food.category === "dessert");
+  const offeredFoods = items.filter((food) => food.category === "offered");
+  const dessertFoods = items.filter((food) => food.category === "dessert");
   const dessertLimit = dessertFoods.slice(0, 4);
-  const pizzas = foods.filter((food) => food.category === "pizza");
+  const pizzas = items.filter((food) => food.category === "pizza");
   const pizzasLimit = pizzas.slice(0, 4);
-  const salads = foods.filter((food) => food.category === "salad");
+  const salads = items.filter((food) => food.category === "salad");
   const saladsLImit = salads.slice(0, 4);
-  const soup = foods.filter((food) => food.category === "soup");
+  const soup = items.filter((food) => food.category === "soup");
   const soupLimit = soup.slice(0, 4);
 
   return (

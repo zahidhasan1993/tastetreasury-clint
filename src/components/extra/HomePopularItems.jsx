@@ -5,8 +5,8 @@ import useMenu from "../../customHooks/useMenu";
 import { Link } from "react-router-dom";
 
 const HomePopularItems = () => {
-  const [data] = useMenu();
-  const popularFood = data.filter((food) => food.category === "popular");
+  const {items} = useMenu();
+  const popularFood = items.filter((food) => food.category === "popular");
 
   return (
     <div className="my-24 md:mx-36 text-center">
