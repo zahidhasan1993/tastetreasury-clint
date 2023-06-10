@@ -100,7 +100,7 @@ const Dashboard = () => {
             }>
             <FaCalendar></FaCalendar> <li>Reservation</li>
           </NavLink>
-          <NavLink to='/dashboard/payment' className={({ isActive }) =>
+          <NavLink to='/dashboard/paymenthistory' className={({ isActive }) =>
               isActive
                 ? "text-white font-bold flex mb-4 text-xl items-center gap-2"
                 : "flex mb-4 text-xl items-center gap-2"

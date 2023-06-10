@@ -4,14 +4,18 @@ import AllUsersTable from "./AllUsersTable";
 import BannnerTitle from "../../banner/BannnerTitle";
 import { TitleChange } from "../../../customHooks/titleChange";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../customHooks/useAxiosSecure";
 
 const AllUsers = () => {
   TitleChange("Allusers | TasteTreasury");
+  const axios = useAxiosSecure();
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/users");
-      return res.json();
+      const res = await axios.get("/users");
+      // console.log(res.data);
+      return res.data;
+
     },
   });
   const handleMakeAdmin = (user) => {
@@ -75,7 +79,7 @@ const AllUsers = () => {
         mainText="MANAGE ALL USERS"
       ></BannnerTitle>
       <div className="overflow-x-auto">
-        <h1 className="text-2xl font-bold">Total users: {users.length}</h1>
+        <h1 className="text-2xl my-10 font-bold">Total users: {users.length}</h1>
         <table className="table table-zebra w-full">
           {/* head */}
           <thead>

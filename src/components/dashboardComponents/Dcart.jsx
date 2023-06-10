@@ -3,6 +3,7 @@ import { TitleChange } from "../../customHooks/titleChange";
 import BannnerTitle from "../banner/BannnerTitle";
 import DcartTable from "./DcartTable";
 import useCart from "../../customHooks/useCart";
+import { Link } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
 
 const Dcart = () => {
@@ -22,7 +23,7 @@ const Dcart = () => {
       <div className="md:flex md:justify-between">
         <h1 className="text-3xl font-bold">Total Orders : {cart?.length}</h1>
         <h1 className="text-3xl font-bold">Total Price : ${finalTotal}</h1>
-        <button className="btn btn-wide bg-[#D1A054] border-none hover:bg-amber-300 hover:text-white ">PAY</button>
+        <Link to='/dashboard/payment' className="btn btn-wide bg-[#D1A054] border-none hover:bg-amber-300 hover:text-white ">PAY</Link>
       </div>
       <div className="mt-14">
         <div className="overflow-x-auto">

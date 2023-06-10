@@ -12,13 +12,14 @@ import PrivateRoute from "./PrivateRoute";
 import Dhome from "../dashboardComponents/Dhome";
 import Dreservation from "../dashboardComponents/Dreservation";
 import Dcart from "../dashboardComponents/Dcart";
-import Dpayment from "../dashboardComponents/Dpayment";
 import Dreview from "../dashboardComponents/Dreview";
 import Dbooking from "../dashboardComponents/Dbooking";
 import AllUsers from "../dashboardComponents/admin/AllUsers";
 import AdminRoute from "./AdminRoute";
 import AddItems from "../dashboardComponents/admin/AddItems";
 import ManageItems from "../dashboardComponents/admin/ManageItems";
+import Dpaymenthistory from "../dashboardComponents/Dpaymenthistory";
+import Dpayment from "../dashboardComponents/Dpayment";
 
 const router = createBrowserRouter([
   {
@@ -73,8 +74,8 @@ const router = createBrowserRouter([
         element: <Dcart></Dcart>,
       },
       {
-        path: "payment",
-        element: <Dpayment></Dpayment>,
+        path: "paymenthistory",
+        element: <Dpaymenthistory></Dpaymenthistory>
       },
       {
         path: "review",
@@ -84,6 +85,11 @@ const router = createBrowserRouter([
         path: "booking",
         element: <Dbooking></Dbooking>,
       },
+      {
+        path: 'payment',
+        element: <Dpayment></Dpayment>
+      },
+      //admin routes
       {
         path: "allusers",
         element: (
