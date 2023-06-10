@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import useAxiosSecure from "../../customHooks/useAxiosSecure";
 import useAuth from "../../customHooks/useAuth";
+import Swal from "sweetalert2";
 const CheckoutForm = ({ price }) => {
   const [error, setError] = useState("");
   const axios = useAxiosSecure();
@@ -20,7 +21,7 @@ const CheckoutForm = ({ price }) => {
       });
     }
   }, [price, axios]);
-  console.log(clintSecret);
+  // console.log(clintSecret);
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!stripe || !elements) {
@@ -31,7 +32,7 @@ const CheckoutForm = ({ price }) => {
       return;
     }
     // console.log(card);
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
+    const { error } = await stripe.createPaymentMethod({
       type: "card",
       card,
     });
@@ -39,7 +40,7 @@ const CheckoutForm = ({ price }) => {
       console.log(error);
       setError(error.message);
     } else {
-      console.log(paymentMethod);
+      // console.log(paymentMethod);
       setError('')
     }
     const {paymentIntent, error: cardError} = await stripe.confirmCardPayment(
@@ -60,6 +61,24 @@ const CheckoutForm = ({ price }) => {
       console.log(cardError);
     }
     console.log(paymentIntent);
+    if (paymentIntent.status === 'succeeded') {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: `$${paymentIntent.amount / 100} Payment Successful`,
+        showConfirmButton: false,
+        timer: 1500
+      })
+      const payment = {
+        email : user.email,
+        tarnsitionId: paymentIntent.id,
+        amount: paymentIntent.amount / 100,
+      }
+      axios.post(`/payment/${user.email}`,payment)
+      .then(res => {
+        console.log(res.data);
+      })
+    }
   };
   return (
     <div className="text-center">
