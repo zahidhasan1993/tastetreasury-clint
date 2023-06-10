@@ -42,7 +42,7 @@ const Dashboard = () => {
           {
             admin ? <>
               <NavLink
-            to="/dashboard/adminHome"
+            to="/dashboard/adminhome"
             className={({ isActive }) =>
               isActive
                 ? "text-white font-bold flex mb-4 text-xl items-center gap-2"

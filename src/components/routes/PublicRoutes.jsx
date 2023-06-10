@@ -20,6 +20,7 @@ import AddItems from "../dashboardComponents/admin/AddItems";
 import ManageItems from "../dashboardComponents/admin/ManageItems";
 import Dpaymenthistory from "../dashboardComponents/Dpaymenthistory";
 import Dpayment from "../dashboardComponents/Dpayment";
+import AdminHome from "../dashboardComponents/admin/AdminHome";
 
 const router = createBrowserRouter([
   {
@@ -114,6 +115,10 @@ const router = createBrowserRouter([
           </AdminRoute>
         ),
       },
+      {
+        path: "adminhome",
+        element:<AdminRoute><AdminHome></AdminHome></AdminRoute>
+      }
     ],
   },
 ]);
